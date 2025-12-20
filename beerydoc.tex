@@ -1,0 +1,244 @@
+\documentclass{beerydoc}
+
+
+\begin{document}
+
+
+\section*{\stepfontsize{1}The \cls{beerydoc} class}
+
+Class designed for the documentation of my packages
+
+Oliver Beery
+
+Version 0.0.0\quad 19 December 2025
+
+
+\section{About}
+
+Documentation for the \cls{beerydoc} class.
+
+\subsection{Loading the class}
+
+\listheading{Requirements:}
+\begin{itemize}
+  \item \LaTeXe{} version 2023-11-01 or newer
+  \item \pkg{l3kernel} version 2023-11-01 or newer
+  \item Must be compiled with Lua\TeX.
+\end{itemize}
+
+\subsection{Package option}
+
+\begin{variable}{showframe}
+  \begin{syntax}
+    \key{showframe}
+  \end{syntax}
+  Passes option \key{showframe} to the \pkg{geometry} package.
+\end{variable}
+
+\section{Commands}
+
+\subsection{Markup for package and class commands}
+
+\begin{function}{\key}
+  \begin{syntax}
+    \cs{key} \marg*{\meta{key}=\meta{value}}
+    \cs{key} \marg{key}
+    \cs{key} \marg*{=\meta{value}}
+  \end{syntax}
+  Prints a key-value pair, a key, or the value of a key.
+  The leading |=| in \marg*{=\meta{value}} is omitted.
+  \meta{key} and \meta{value} print their contents in \cs{ttfamily}.
+  The |=| in \marg*{\meta{key}=\meta{value}} is reformatted and a line break
+  is allowed afterwards.
+  Within \meta{key}, line breaks are allowed after each |/|.
+  Within \meta{value}, spaces are replaced by \cs{textvisiblespace}.
+\end{function}
+
+\begin{function}{\choices}
+  \begin{syntax}
+    \cs{choices} \marg{comma list}
+  \end{syntax}
+  This command is defined only in \meta{value} in \cs{key}.
+  Prints the available choices in \meta{comma list} when documenting a choice
+  key.
+\end{function}
+
+\begin{function}{\cs}
+  \begin{syntax}
+    \cs{cs} \marg{command}
+  \end{syntax}
+  Prints a command.
+  \meta{command} must omit the leading backslash |\|.
+  The contents are printed in \cs{ttfamily}.
+  \cs{meta} can be used in \meta{command}.
+  The underscore |_| can be typeset directly when documenting \pkg{expl3}
+  commands.
+  Spaces are replaced by \cs{textvisiblespace}.
+  % A double at symbol |@@| will be replaced by the module name using the same
+  % convention used in \pkg{docstrip}.
+  Active vertical bars \texttt{\textbar} are replaced by that of catcode 12.
+\end{function}
+
+\begin{function}{\meta}
+  \begin{syntax}
+    \cs{meta} \marg{meta}
+  \end{syntax}
+  Prints a meta representation such as \meta{token list}, \meta{string}, and
+  \meta{comma list}.
+  The contents are printed in \cs{ttfamily} and \cs{slshape}.
+  The underscore |_| is used to apply a subscript, e.g.\ \meta{token list_1},
+  \meta{string_2}, \meta{comma list_3}.
+
+  \listheading
+    {
+      If \meta{meta} begins with the tokens on the left, then they will be
+      replaced by the tokens on the right:
+    }
+  \begin{itemize}[parsep=0pt]
+    \item |fp expr| \rightarrow{} |floating point expression|
+    \item |int expr| \rightarrow{} |integer expression|
+    \item |dim expr| \rightarrow{} |dimen expression|
+    \item |skip expr| \rightarrow{} |skip expression|
+    \item |muskip expr| \rightarrow{} |muskip expression|
+  \end{itemize}
+\end{function}
+
+\begin{function}{\marg}
+  \begin{syntax}
+    \cs{marg} \sarg{} \marg{mandatory argument}
+  \end{syntax}
+  Prints a mandatory argument that is enclosed in braces.
+  The contents are printed in \cs{ttfamily}.
+  If the optional star is omitted, \meta{mandatory argument} is formatted
+  using \cs{meta}\marg{mandatory argument}.
+\end{function}
+
+\begin{function}{\oarg}
+  \begin{syntax}
+    \cs{oarg} \sarg{} \marg{optional argument}
+  \end{syntax}
+  Prints an optional argument that is enclosed in square brackets.
+  The contents are printed in \cs{ttfamily}.
+  If the optional star is omitted, \meta{optional argument} is formatted using
+  \cs{meta}\marg{optional argument}.
+\end{function}
+
+\begin{function}{\sarg}
+  \begin{syntax}
+    \cs{sarg}
+  \end{syntax}
+  Prints an optional star that is enclosed in angle brackets.
+  The optional star is printed in \cs{ttfamily}.
+\end{function}
+
+\begin{function}{\cls, \env, \pkg, \hook, \socket, \plug, \template, \instance}
+  \begin{syntax}
+    \obeyspaces
+    \cs{cls}      \marg{class}
+    \cs{pkg}      \marg{package}
+    \cs{env}      \marg{environment}
+    \cs{hook}     \marg{hook}
+    \cs{socket}   \marg{socket}
+    \cs{plug}     \marg{plug}
+    \cs{template} \marg{template}
+    \cs{instance} \marg{instance}
+  \end{syntax}
+  Prints the name of a class, environment, package, hook, socket, plug,
+  template, or instance.
+  The contents are printed in \cs{ttfamily}, except for \meta{class} and
+  \meta{package} which are printed in \cs{sffamily}.
+\end{function}
+
+\subsection{Some text formatting}
+
+\begin{function}{\allcaps}
+  \begin{syntax}
+    \cs{allcaps} \oarg{int expr} \marg{text}
+  \end{syntax}
+  Prints \meta{text} in all capital letters with added letterspacing.
+  The amount of letterspacing equals the result of evaluating the
+  \meta{int expr} divided by \num{1000} in units of \unit{em}.
+  If the optional argument is omitted, the letterspacing is increased by
+  \qty{0.05}{em}.
+\end{function}
+
+\begin{function}{\allsmallcaps}
+  \begin{syntax}
+    \cs{allsmallcaps} \sarg{} \oarg{int expr} \marg{text}
+  \end{syntax}
+  Prints \meta{text} in all small caps with added letterspacing.
+  The amount of letterspacing equals the result of evaluating the
+  \meta{int expr} divided by \num{1000} in units of \unit{em}.
+  If the optional argument is omitted, the letterspacing is increased by
+  \qty{0.05}{em}.
+  If the optional star is added, capital letters are also changed to small
+  caps.
+\end{function}
+
+\begin{function}{\honorific}
+  \begin{syntax}
+    \cs{honorific} \marg{honorific}
+  \end{syntax}
+  Prints an honorific such as Mr., Ms., or Dr.
+  This command should only be used before the name of the person.
+\end{function}
+
+\begin{function}{\latin}
+  \begin{syntax}
+    \cs{latin} \marg{text}
+  \end{syntax}
+  Prints a latin phrase.
+  The contents are printed in \cs{itshape}.
+\end{function}
+
+\subsection{Expandable commands}
+
+Some expandable commands that are useful for testing.
+
+\begin{function}{\alphabet}
+  \begin{syntax}
+    \cs{alphabet}
+  \end{syntax}
+  Expands to \enquote{\alphabet}.
+\end{function}
+
+\begin{function}{\digits}
+  \begin{syntax}
+    \cs{digits}
+  \end{syntax}
+  Expands to \enquote{\digits}.
+\end{function}
+
+\begin{function}{\pangram}
+  \begin{syntax}
+    \cs{pangram}
+  \end{syntax}
+  Expands to \enquote{\pangram}
+\end{function}
+
+
+\section{Environments}
+
+\begin{function}{function, variable}
+  \begin{syntax}
+    \cs{begin}\marg*{function}\marg{comma list}
+    \cs{begin}\marg*{variable}\marg{comma list}
+  \end{syntax}
+  Used to document one or more functions or variables.
+  \meta{comma list} should contain a comma-separated list of the documented
+  functions or variables.
+  The content is contained within a \env{minipage} to prevent page breaks.
+\end{function}
+
+\begin{function}{syntax}
+  \begin{syntax}
+    \cs{begin}\marg*{syntax}
+  \end{syntax}
+  Used to document the syntax of a function (and sometimes variable) with a
+  \env{function} or \env{variable} environment.
+  The contents are printed in \cs{ttfamily}.
+  \cs{obeylines} is enabled within a \env{syntax} environment.
+\end{function}
+
+
+\end{document}
