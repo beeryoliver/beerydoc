@@ -22,7 +22,7 @@ Documentation for the \cls{beerydoc} class.
 \listheading{Requirements:}
 \begin{itemize}
   \item \LaTeXe{} version 2023-11-01 or newer
-  \item \pkg{l3kernel} version 2024-12-09 or newer
+  \item \pkg{l3kernel} version 2023-11-01 or newer
   \item Must be compiled with Lua\TeX.
 \end{itemize}
 
@@ -52,11 +52,11 @@ for verbatim.
     \cs{key} \marg*{=\meta{value}}
   \end{syntax}
   Prints a key-value pair, a key, or the value of a key.
-  The leading |=| in \marg*{=\meta{value}} is omitted.
-  \meta{key} and \meta{value} print their contents in \cs{ttfamily}.
+  \meta{key} and \meta{value} are printed in \cs{ttfamily}.
   The |=| in \marg*{\meta{key}=\meta{value}} is reformatted and a line break
   is allowed afterwards.
-  Within \meta{key}, line breaks are allowed after each |/|.
+  The leading |=| in \marg*{=\meta{value}} is omitted.
+  Within \meta{key}, line breaks are allowed after |/|.
   Within \meta{value}, spaces are replaced by \cs{textvisiblespace}.
 \end{function}
 
@@ -74,9 +74,9 @@ for verbatim.
     \cs{cs} \marg{command}
   \end{syntax}
   Prints a command.
-  \meta{command} must omit the leading backslash |\|.
+  \meta{command} must omit its leading backslash |\|.
   The contents are printed in \cs{ttfamily}.
-  \cs{meta} can be used in \meta{command}.
+  \cs{meta} and other commands can be used in \meta{command}.
   The underscore |_| can be typeset directly without escaping it \cs{_}.
   When printing \pkg{expl3} commands, hyphenation is allowed after most
   underscores.
@@ -93,9 +93,18 @@ for verbatim.
   Prints a meta representation such as \meta{token list}, \meta{string}, and
   \meta{comma list}.
   The contents are printed in \cs{ttfamily} and \cs{slshape}.
-  The underscore |_| is used to apply a subscript, e.g.\ \meta{token list_1},
-  \meta{string_2}, \meta{comma list_3}.
-  \cs{meta} is also usuable in math mode.
+  \cs{meta} is usuable in math mode.
+
+  \listheading
+    {
+      Within \meta{meta}, the underscore \texttt{\textunderscore} is used to
+      apply a subscript.
+      For example, the code on the left prints the display on the right.
+    }
+  \begin{itemize}[parsep=0pt]
+    \item |\meta{token list_1}| \rightarrow{} \meta{token list_1}
+    \item |\meta{integer_2}| \rightarrow{} \meta{integer_2}
+  \end{itemize}
 
   \listheading
     {
@@ -115,46 +124,44 @@ for verbatim.
   \begin{syntax}
     \cs{marg} \sarg{} \marg{mandatory argument}
   \end{syntax}
-  Prints a mandatory argument that is enclosed in braces.
-  The contents are printed in \cs{ttfamily}.
+  Prints a mandatory argument.
+  The contents are enclosed in braces and printed in \cs{ttfamily}.
   If the optional star is omitted, \meta{mandatory argument} is formatted
-  using \cs{meta}\marg{mandatory argument}.
+  using \cs{meta}.
 \end{function}
 
 \begin{function}{\oarg}
   \begin{syntax}
     \cs{oarg} \sarg{} \marg{optional argument}
   \end{syntax}
-  Prints an optional argument that is enclosed in square brackets.
-  The contents are printed in \cs{ttfamily}.
+  Prints an optional argument.
+  The contents are enclosed in square brackets and printed in \cs{ttfamily}.
   If the optional star is omitted, \meta{optional argument} is formatted using
-  \cs{meta}\marg{optional argument}.
+  \cs{meta}.
 \end{function}
 
 \begin{function}{\sarg}
   \begin{syntax}
     \cs{sarg}
   \end{syntax}
-  Prints an optional star that is enclosed in angle brackets.
-  The optional star is printed in \cs{ttfamily}.
+  Prints an optional star.
+  The optional star is enclosed in angle brackets and printed in \cs{ttfamily}.
 \end{function}
 
-\begin{function}{\cls, \env, \pkg, \hook, \socket, \plug, \template, \instance}
+\begin{function}{\cls, \env, \pkg, \hook, \socket, \plug}
   \begin{syntax}
     \obeyspaces
-    \cs{cls}      \marg{class}
-    \cs{pkg}      \marg{package}
-    \cs{env}      \marg{environment}
-    \cs{hook}     \marg{hook}
-    \cs{socket}   \marg{socket}
-    \cs{plug}     \marg{plug}
-    \cs{template} \marg{template}
-    \cs{instance} \marg{instance}
+    \cs{cls}    \marg{class}
+    \cs{pkg}    \marg{package}
+    \cs{env}    \marg{environment}
+    \cs{hook}   \marg{hook}
+    \cs{socket} \marg{socket}
+    \cs{plug}   \marg{plug}
   \end{syntax}
-  Prints the name of a class, environment, package, hook, socket, plug,
-  template, or instance.
-  The contents are printed in \cs{ttfamily}, except for \meta{class} and
-  \meta{package} which are printed in \cs{sffamily}.
+  Prints the name of a class, environment, package, hook, socket, or plug.
+  \meta{class} and \meta{package} are printed in \cs{sffamily}.
+  The rest are printed in \cs{ttfamily}.
+  Within \meta{hook}, line breaks after allowed after |/|.
 \end{function}
 
 \subsection{Some text formatting}
@@ -164,8 +171,8 @@ for verbatim.
     \cs{allcaps} \oarg{int expr} \marg{text}
   \end{syntax}
   Prints \meta{text} in all capital letters with added letterspacing.
-  The amount of letterspacing equals the result of evaluating the
-  \meta{int expr} divided by \num{1000} in units of \unit{em}.
+  The added letterspacing equals the result of evaluating the \meta{int expr}
+  in units of thousandths of \unit{em}.
   If the optional argument is omitted, the letterspacing is increased by
   \qty{0.05}{em}.
 \end{function}
@@ -175,8 +182,8 @@ for verbatim.
     \cs{allsmallcaps} \sarg{} \oarg{int expr} \marg{text}
   \end{syntax}
   Prints \meta{text} in all small caps with added letterspacing.
-  The amount of letterspacing equals the result of evaluating the
-  \meta{int expr} divided by \num{1000} in units of \unit{em}.
+  The added letterspacing equals the result of evaluating the \meta{int expr}
+  in units of thousandths of \unit{em}.
   If the optional argument is omitted, the letterspacing is increased by
   \qty{0.05}{em}.
   If the optional star is added, capital letters are also changed to small
