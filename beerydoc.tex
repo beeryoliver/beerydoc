@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 27 December 2025
+Version 0.0.0\quad 29 December 2025
 
 
 \section{About}
@@ -28,12 +28,12 @@ Documentation for the \cls{beerydoc} class.
 
 \subsection{Package option}
 
-\begin{variable}{showframe}
+\begin{code}{showframe}
   \begin{syntax}
     \key{showframe}
   \end{syntax}
   Passes option \key{showframe} to the \pkg{geometry} package.
-\end{variable}
+\end{code}
 
 \subsection{Miscellaneous}
 
@@ -45,7 +45,7 @@ for verbatim.
 
 \subsection{Markup for package and class commands}
 
-\begin{function}{\key}
+\begin{code}{\key}
   \begin{syntax}
     \cs{key} \marg*{\meta{key}=\meta{value}}
     \cs{key} \marg{key}
@@ -58,23 +58,23 @@ for verbatim.
   The leading |=| in \marg*{=\meta{value}} is omitted.
   Within \meta{key}, line breaks are allowed after |/|.
   Within \meta{value}, spaces are replaced by \cs{textvisiblespace}.
-\end{function}
+\end{code}
 
-\begin{function}{\choices}
+\begin{code}{\choices}
   \begin{syntax}
     \cs{choices} \marg{comma list}
   \end{syntax}
   This command is defined only in \meta{value} in \cs{key}.
   Prints the available choices in \meta{comma list} when documenting a choice
   key.
-\end{function}
+\end{code}
 
-\begin{function}{\cs}
+\begin{code}{\cs}
   \begin{syntax}
     \cs{cs} \marg{command}
   \end{syntax}
   Prints a command.
-  \meta{command} must omit its leading backslash |\|.
+  \meta{command} must omit the leading backslash |\|.
   The contents are printed in \cs{ttfamily}.
   \cs{meta} and other commands can be used in \meta{command}.
   The underscore |_| can be typeset directly without escaping it \cs{_}.
@@ -84,9 +84,9 @@ for verbatim.
   % A double at symbol |@@| will be replaced by the module name using the same
   % convention used in \pkg{docstrip}.
   Active vertical bars \texttt{\textbar} are replaced by that of catcode 12.
-\end{function}
+\end{code}
 
-\begin{function}{\meta}
+\begin{code}{\meta}
   \begin{syntax}
     \cs{meta} \marg{meta}
   \end{syntax}
@@ -118,19 +118,19 @@ for verbatim.
     \item |skip expr| \rightarrow{} |skip expression|
     \item |muskip expr| \rightarrow{} |muskip expression|
   \end{itemize}
-\end{function}
+\end{code}
 
-\begin{function}{\marg}
+\begin{code}{\marg}
   \begin{syntax}
     \cs{marg} \sarg{} \marg{mandatory argument}
   \end{syntax}
   Prints a mandatory argument.
   The contents are enclosed in braces and printed in \cs{ttfamily}.
-  If the optional star is omitted, \meta{mandatory argument} is formatted
-  using \cs{meta}.
-\end{function}
+  If the optional star is omitted, \meta{mandatory argument} is formatted using
+  \cs{meta}.
+\end{code}
 
-\begin{function}{\oarg}
+\begin{code}{\oarg}
   \begin{syntax}
     \cs{oarg} \sarg{} \marg{optional argument}
   \end{syntax}
@@ -138,19 +138,18 @@ for verbatim.
   The contents are enclosed in square brackets and printed in \cs{ttfamily}.
   If the optional star is omitted, \meta{optional argument} is formatted using
   \cs{meta}.
-\end{function}
+\end{code}
 
-\begin{function}{\sarg}
+\begin{code}{\sarg}
   \begin{syntax}
     \cs{sarg}
   \end{syntax}
   Prints an optional star.
   The optional star is enclosed in angle brackets and printed in \cs{ttfamily}.
-\end{function}
+\end{code}
 
-\begin{function}{\cls, \env, \pkg, \hook, \socket, \plug}
+\begin{code}{\cls, \env, \pkg, \hook, \socket, \plug}
   \begin{syntax}
-    \obeyspaces
     \cs{cls}    \marg{class}
     \cs{pkg}    \marg{package}
     \cs{env}    \marg{environment}
@@ -162,11 +161,11 @@ for verbatim.
   \meta{class} and \meta{package} are printed in \cs{sffamily}.
   The rest are printed in \cs{ttfamily}.
   Within \meta{hook}, line breaks after allowed after |/|.
-\end{function}
+\end{code}
 
 \subsection{Some text formatting}
 
-\begin{function}{\allcaps}
+\begin{code}{\allcaps}
   \begin{syntax}
     \cs{allcaps} \oarg{int expr} \marg{text}
   \end{syntax}
@@ -175,9 +174,9 @@ for verbatim.
   in units of thousandths of \unit{em}.
   If the optional argument is omitted, the letterspacing is increased by
   \qty{0.05}{em}.
-\end{function}
+\end{code}
 
-\begin{function}{\allsmallcaps}
+\begin{code}{\allsmallcaps}
   \begin{syntax}
     \cs{allsmallcaps} \sarg{} \oarg{int expr} \marg{text}
   \end{syntax}
@@ -188,72 +187,73 @@ for verbatim.
   \qty{0.05}{em}.
   If the optional star is added, capital letters are also changed to small
   caps.
-\end{function}
+\end{code}
 
-\begin{function}{\honorific}
+\begin{code}{\honorific}
   \begin{syntax}
     \cs{honorific} \marg{honorific}
   \end{syntax}
   Prints an honorific such as Mr., Ms., or Dr.
   This command should only be used before the name of the person.
-\end{function}
+\end{code}
 
-\begin{function}{\latin}
+\begin{code}{\latin}
   \begin{syntax}
     \cs{latin} \marg{text}
   \end{syntax}
   Prints a latin phrase.
   The contents are printed in \cs{itshape}.
-\end{function}
+\end{code}
 
 \subsection{Expandable commands}
 
 Some expandable commands that are useful for testing.
 
-\begin{function}{\alphabet}
+\begin{code}{\alphabet}
   \begin{syntax}
     \cs{alphabet}
   \end{syntax}
   Expands to \enquote{\alphabet}.
-\end{function}
+\end{code}
 
-\begin{function}{\digits}
+\begin{code}{\digits}
   \begin{syntax}
     \cs{digits}
   \end{syntax}
   Expands to \enquote{\digits}.
-\end{function}
+\end{code}
 
-\begin{function}{\pangram}
+\begin{code}{\pangram}
   \begin{syntax}
     \cs{pangram}
   \end{syntax}
   Expands to \enquote{\pangram}
-\end{function}
+\end{code}
 
 
 \section{Environments}
 
-\begin{function}{function, variable}
+\begin{code}{code}
   \begin{syntax}
-    \cs{begin}\marg*{function}\marg{comma list}
-    \cs{begin}\marg*{variable}\marg{comma list}
+    \cs{begin}\marg*{code}\marg{comma list}
   \end{syntax}
-  Used to document one or more functions or variables.
+  Used to document code---functions, variables, key-value interfaces,
+  environments, etc.
   \meta{comma list} should contain a comma-separated list of the documented
-  functions or variables.
+  code elements.
   The content is contained within a \env{minipage} to prevent page breaks.
-\end{function}
+\end{code}
 
-\begin{function}{syntax}
+\begin{code}{syntax}
   \begin{syntax}
     \cs{begin}\marg*{syntax}
   \end{syntax}
-  Used to document the syntax of a function (and sometimes variable) with a
-  \env{function} or \env{variable} environment.
+  Used to document code syntax.
+  Must be used within a \env{code} environment.
   The contents are printed in \cs{ttfamily}.
-  \cs{obeylines} is enabled within a \env{syntax} environment.
-\end{function}
+  \cs{obeylines} and \cs{obeyspaces} are enabled within a \env{syntax}
+  environment.
+\end{code}
 
 
 \end{document}
