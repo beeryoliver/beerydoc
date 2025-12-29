@@ -196,6 +196,7 @@
         \c__beerydoc_active_underscore_tl
       }
       { \tl_replace_all:NVn \l__beerydoc_cs_tl ##1 { _ } }
+    \tl_replace_all:Nnn \l__beerydoc_cs_tl { \_ } { _ }
   }
 \cs_new_protected:Npn \__beerydoc_cs_hyphenation:
   {
