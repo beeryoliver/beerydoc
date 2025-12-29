@@ -176,6 +176,7 @@
       \tl_replace_all:NVn \l__beerydoc_cs_tl \c__beerydoc_active_vert_tl { | }
       \__beerydoc_cs_replace_spaces:
       \__beerydoc_cs_replace_underscore:
+      \cs_log:N \l__beerydoc_cs_tl
       \__beerydoc_cs_hyphenation:
       \ttfamily
       \c_backslash_str \l__beerydoc_cs_tl \@
@@ -196,6 +197,7 @@
         \c__beerydoc_active_underscore_tl
       }
       { \tl_replace_all:NVn \l__beerydoc_cs_tl ##1 { _ } }
+    \tl_replace_all:Nnn \l__beerydoc_cs_tl { \_ } { _ }
   }
 \cs_new_protected:Npn \__beerydoc_cs_hyphenation:
   {
