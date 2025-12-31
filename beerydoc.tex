@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 29 December 2025
+Version 0.0.0\quad 31 December 2025
 
 
 \section{About}
@@ -58,6 +58,9 @@ for verbatim.
   The leading |=| in \marg*{=\meta{value}} is omitted.
   Within \meta{key}, line breaks are allowed after |/|.
   Within \meta{value}, spaces are replaced by \cs{textvisiblespace}.
+  Sometimes the best way to typeset the value of a key is not with
+  \cs{key}\marg*{=\meta{value}}, but with \cs{num}, \cs{qty},
+  (both from the \pkg{siunitx} package) or \cs{meta}.
 \end{code}
 
 \begin{code}{\choices}
