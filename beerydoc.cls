@@ -1,7 +1,7 @@
 % Loading the class
 
 \NeedsTeXFormat{LaTeX2e}[2025-11-01]
-\ProvidesExplClass{beerydoc}{2026-01-06}{0.0.0}{}
+\ProvidesExplClass{beerydoc}{2026-01-07}{0.0.0}{}
 \prop_gput:Nnn \g_msg_module_type_prop { beerydoc } { Class }
 
 \msg_new:nnn { beerydoc } { l3kernel }
@@ -91,6 +91,7 @@
 \tl_new:N \l__beerydoc_cs_tl
 \tl_new:N \l__beerydoc_meta_tl
 \tl_new:N \l__beerydoc_hook_tl
+\tl_new:N \l__beerydoc_socket_tl
 
 \bool_new:N \l__beerydoc_syntax_bool
 
@@ -350,11 +351,10 @@
     \__beerydoc_tmp:nN
   }
 \__beerydoc_tmp:nN
-  {cls}    \sffamily
-  {pkg}    \sffamily
-  {env}    \ttfamily
-  {socket} \ttfamily
-  {plug}   \ttfamily
+  {cls}  \sffamily
+  {pkg}  \sffamily
+  {env}  \ttfamily
+  {plug} \ttfamily
   { \q_recursion_tail } \scan_stop:
 \q_recursion_stop
 
@@ -375,6 +375,24 @@
     \group_end:
   }
 \cs_new_protected:Npn \__beerydoc_hook_slash: { / \allowbreak }
+
+\NewDocumentCommand \socket { m }
+  {
+    \mode_if_math:TF
+      { \msg_error:nnn { beerydoc } { math-mode-invalid } { socket } }
+      { \__beerydoc_socket:n {#1} }
+  }
+\cs_new_protected:Npn \__beerydoc_socket:n #1
+  {
+    \group_begin:
+      \tl_set:Nn \l__beerydoc_socket_tl {#1}
+      \tl_replace_all:Nnn \l__beerydoc_socket_tl { / }
+        { \__beerydoc_socket_slash: }
+      \ttfamily
+      \l__beerydoc_socket_tl \@
+    \group_end:
+  }
+\cs_new_protected:Npn \__beerydoc_socket_slash: { / \allowbreak }
 
 \NewDocumentCommand \latin { m }
   {
