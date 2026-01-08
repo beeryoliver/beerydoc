@@ -133,12 +133,11 @@
   {
     \group_begin:
       \tl_set:Nn \l__beerydoc_key_tl {#1}
-      \tl_replace_all:Nnn \l__beerydoc_key_tl { / } { \__beerydoc_key_slash: }
+      \tl_replace_all:Nnn \l__beerydoc_key_tl { / } { \slash }
       \ttfamily
       \l__beerydoc_key_tl \@
     \group_end:
   }
-\cs_new_protected:Npn \__beerydoc_key_slash: { / \allowbreak }
 \cs_new_protected:Npn \__beerydoc_key_value_equal:
   {
     \bool_if:NTF \l__beerydoc_syntax_bool
@@ -368,13 +367,11 @@
   {
     \group_begin:
       \tl_set:Nn \l__beerydoc_hook_tl {#1}
-      \tl_replace_all:Nnn \l__beerydoc_hook_tl { / }
-        { \__beerydoc_hook_slash: }
+      \tl_replace_all:Nnn \l__beerydoc_hook_tl { / } { \slash }
       \ttfamily
       \l__beerydoc_hook_tl \@
     \group_end:
   }
-\cs_new_protected:Npn \__beerydoc_hook_slash: { / \allowbreak }
 
 \NewDocumentCommand \socket { m }
   {
@@ -386,13 +383,11 @@
   {
     \group_begin:
       \tl_set:Nn \l__beerydoc_socket_tl {#1}
-      \tl_replace_all:Nnn \l__beerydoc_socket_tl { / }
-        { \__beerydoc_socket_slash: }
+      \tl_replace_all:Nnn \l__beerydoc_socket_tl { / } { \slash }
       \ttfamily
       \l__beerydoc_socket_tl \@
     \group_end:
   }
-\cs_new_protected:Npn \__beerydoc_socket_slash: { / \allowbreak }
 
 \NewDocumentCommand \latin { m }
   {
@@ -436,7 +431,7 @@
 \cs_new_protected:Npn \__beerydoc_text_lowercase_small_caps:nn #1#2
   { \textls [ \int_eval:n {#1} ] { \scshape \text_lowercase:n {#2} } }
 
-\RenewDocumentCommand \slash { } { / \allowbreak }
+\RenewDocumentCommand \slash { } { / \penalty \exhyphenpenalty }
 
 % Custom environments
 
