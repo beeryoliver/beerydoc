@@ -10,14 +10,16 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 10 January 2026
+Version 0.0.0\quad 24 January 2026
 
 
 \section{About}
+\label{sec:about}
 
 Documentation for the \cls{beerydoc} class.
 
 \subsection{Loading the class}
+\label{subsec:loading}
 
 \listheading{Requirements:}
 \begin{itemize}
@@ -27,6 +29,7 @@ Documentation for the \cls{beerydoc} class.
 \end{itemize}
 
 \subsection{Package option}
+\label{subsec:pkgoptions}
 
 \begin{code}{key:showframe}
   \begin{syntax}
@@ -36,14 +39,17 @@ Documentation for the \cls{beerydoc} class.
 \end{code}
 
 \subsection{Miscellaneous}
+\label{subsec:misc}
 
 The vertical bar \texttt{\textbar} is set as an active character, a shortcut
 for verbatim.
 
 
 \section{Commands}
+\label{sec:commands}
 
 \subsection{Markup for package and class commands}
+\label{subsec:clsmarkup}
 
 \begin{code}{\key}
   \begin{syntax}
@@ -53,8 +59,8 @@ for verbatim.
   \end{syntax}
   Prints a key-value pair, a key, or the value of a key.
   \meta{key} and \meta{value} are printed in \cs{ttfamily}.
-  The |=| in \marg*{\meta{key}=\meta{value}} is reformatted and a line break
-  is allowed afterwards.
+  The |=| in \marg*{\meta{key}=\meta{value}} is reformatted and a line break is
+  allowed afterwards.
   The leading |=| in \marg*{=\meta{value}} is omitted.
   Within \meta{key}, line breaks are allowed after |/|.
   Within \meta{value}, spaces are replaced by \cs{textvisiblespace}.
@@ -111,8 +117,9 @@ for verbatim.
 
   \listheading
     {
-      If \meta{meta} begins with the tokens on the left, then they will be
-      replaced by the tokens on the right:
+      If the value of the key \key{meta/replace-expr} is \key{=true}
+      (\S\ref{sec:keys}) and \meta{meta} begins with the tokens on the left,
+      then they will be replaced by the tokens on the right:
     }
   \begin{itemize}[parsep=0pt]
     \item |fp expr| \rightarrow{} |floating point expression|
@@ -167,6 +174,7 @@ for verbatim.
 \end{code}
 
 \subsection{Some text formatting}
+\label{subsec:text}
 
 \begin{code}{\allcaps}
   \begin{syntax}
@@ -209,6 +217,7 @@ for verbatim.
 \end{code}
 
 \subsection{Expandable commands}
+\label{subec:expandable}
 
 Some expandable commands that are useful for testing.
 
@@ -235,6 +244,9 @@ Some expandable commands that are useful for testing.
 
 
 \section{Environments}
+\label{sec:environments}
+
+This section documents the environments provided by the \cls{beerydoc} class.
 
 \begin{code}{env:code}
   \begin{syntax}
@@ -260,6 +272,22 @@ Some expandable commands that are useful for testing.
   The contents are printed in \cs{ttfamily}.
   \cs{obeylines} and \cs{obeyspaces} are enabled within a \env{syntax}
   environment.
+\end{code}
+
+
+\section{Keys}
+\label{sec:keys}
+
+This section documents the keys provided by the \cls{beerydoc} class.
+
+\begin{code}{key:meta/replace-expr}
+  \begin{syntax}
+    \key{meta/replace-expr=\choices{true,false}}
+  \end{syntax}
+  Boolean key that sets whether to replace shorthands for various
+  computational expressions with their longer form.
+  See the documentation for \cs{meta} for details (\S\ref{subsec:clsmarkup}).
+  The initial value is \key{=true}.
 \end{code}
 
 
