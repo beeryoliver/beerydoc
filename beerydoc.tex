@@ -250,15 +250,17 @@ This section documents the environments provided by the \cls{beerydoc} class.
 
 \begin{code}{env:code}
   \begin{syntax}
-    |\begin{code}|\marg{comma list}
+    |\begin{code}|\marg{code elements}
     ~~\meta{code documentation}
     |\end{code}|
   \end{syntax}
-  Used to document code---commands, key-value interfaces, environments, etc.
-  \meta{comma list} should contain a comma-separated list of the documented
+  Used to document code elements such commands, keys, and environments.
+  \meta{code elements} should contain a comma-separated list of the documented
   code elements.
-  The content is contained within a \env{minipage} to prevent page breaks.
+  The content is contained within an \pkg{expl3} |coffin| to prevent page
+  breaks.
   Should be paired with a nested \env{syntax} environment.
+  Cannot be used within another \env{code} environment.
 \end{code}
 
 \begin{code}{env:syntax}
@@ -272,6 +274,7 @@ This section documents the environments provided by the \cls{beerydoc} class.
   The contents are printed in \cs{ttfamily}.
   \cs{obeylines} and \cs{obeyspaces} are enabled within a \env{syntax}
   environment.
+  Cannot be used within another \env{syntax} environment.
 \end{code}
 
 
