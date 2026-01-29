@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 24 January 2026
+Version 0.0.0\quad 28 January 2026
 
 
 \section{About}
@@ -31,7 +31,7 @@ Documentation for the \cls{beerydoc} class.
 \subsection{Package option}
 \label{subsec:pkgoptions}
 
-\begin{code}{key:showframe}
+\begin{code}{showframe}
   \begin{syntax}
     \key{showframe}
   \end{syntax}
@@ -283,7 +283,16 @@ This section documents the environments provided by the \cls{beerydoc} class.
 
 This section documents the keys provided by the \cls{beerydoc} class.
 
-\begin{code}{key:meta/replace-expr}
+\begin{code}{frenchspacing}
+  \begin{syntax}
+    \key{frenchspacing=\choices{true,false}}
+  \end{syntax}
+  Boolean key that sets whether \cs{frenchspacing} (true) or
+  \cs{nonfrenchspacing} (false) is enabled.
+  The initial value is \key{=true}.
+\end{code}
+
+\begin{code}{meta/replace-expr}
   \begin{syntax}
     \key{meta/replace-expr=\choices{true,false}}
   \end{syntax}
