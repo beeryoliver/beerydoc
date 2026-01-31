@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 28 January 2026
+Version 0.0.0\quad 30 January 2026
 
 
 \section{About}
@@ -242,6 +242,18 @@ Some expandable commands that are useful for testing.
   Expands to \enquote{\pangram}
 \end{code}
 
+\subsection{Other}
+\label{subsec:other}
+
+\begin{code}{\printfontsizecommand}
+  \begin{syntax}
+    \cs{printfontsizecommand}
+  \end{syntax}
+  Identical to \cs{printfontsizecommand} defined by the \pkg{fontscale}
+  package, except that the command name is formatted using \cs{cs}
+  (\S\ref{subsec:clsmarkup}).
+\end{code}
+
 
 \section{Environments}
 \label{sec:environments}
@@ -282,15 +294,6 @@ This section documents the environments provided by the \cls{beerydoc} class.
 \label{sec:keys}
 
 This section documents the keys provided by the \cls{beerydoc} class.
-
-\begin{code}{frenchspacing}
-  \begin{syntax}
-    \key{frenchspacing=\choices{true,false}}
-  \end{syntax}
-  Boolean key that sets whether \cs{frenchspacing} (true) or
-  \cs{nonfrenchspacing} (false) is enabled.
-  The initial value is \key{=true}.
-\end{code}
 
 \begin{code}{meta/replace-expr}
   \begin{syntax}
