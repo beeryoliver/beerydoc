@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 30 January 2026
+Version 0.0.0\quad 1 February 2026
 
 
 \section{About}
@@ -132,21 +132,21 @@ for verbatim.
 
 \begin{code}{\marg}
   \begin{syntax}
-    \cs{marg} \sarg{} \marg{mandatory argument}
+    \cs{marg} \sarg{} \marg{argument}
   \end{syntax}
   Prints a mandatory argument.
   The contents are enclosed in braces and printed in \cs{ttfamily}.
-  If the optional star is omitted, \meta{mandatory argument} is formatted using
+  If the optional star is omitted, \meta{argument} is formatted using
   \cs{meta}.
 \end{code}
 
 \begin{code}{\oarg}
   \begin{syntax}
-    \cs{oarg} \sarg{} \marg{optional argument}
+    \cs{oarg} \sarg{} \marg{argument}
   \end{syntax}
   Prints an optional argument.
   The contents are enclosed in square brackets and printed in \cs{ttfamily}.
-  If the optional star is omitted, \meta{optional argument} is formatted using
+  If the optional star is omitted, \meta{argument} is formatted using
   \cs{meta}.
 \end{code}
 
@@ -178,24 +178,20 @@ for verbatim.
 
 \begin{code}{\allcaps}
   \begin{syntax}
-    \cs{allcaps} \oarg{int expr} \marg{text}
+    \cs{allcaps} \oarg{integer} \marg{text}
   \end{syntax}
   Prints \meta{text} in all capital letters with added letterspacing.
-  The added letterspacing equals the result of evaluating the \meta{int expr}
-  in units of thousandths of \unit{em}.
-  If the optional argument is omitted, the letterspacing is increased by
-  \qty{0.05}{em}.
+  The added letterspacing equals \meta{integer} in units of thousandths of
+  \unit{em} or, if the optional argument is omitted, \qty{0.05}{em}.
 \end{code}
 
 \begin{code}{\allsmallcaps}
   \begin{syntax}
-    \cs{allsmallcaps} \sarg{} \oarg{int expr} \marg{text}
+    \cs{allsmallcaps} \sarg{} \oarg{integer} \marg{text}
   \end{syntax}
   Prints \meta{text} in all small caps with added letterspacing.
-  The added letterspacing equals the result of evaluating the \meta{int expr}
-  in units of thousandths of \unit{em}.
-  If the optional argument is omitted, the letterspacing is increased by
-  \qty{0.05}{em}.
+  The added letterspacing equals \meta{integer} in units of thousandths of
+  \unit{em} or, if the optional argument is omitted, \qty{0.05}{em}.
   If the optional star is added, capital letters are also changed to small
   caps.
 \end{code}
