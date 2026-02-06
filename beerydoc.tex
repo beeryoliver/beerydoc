@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 1 February 2026
+Version 0.0.0\quad 5 February 2026
 
 
 \section{About}
@@ -263,9 +263,9 @@ Some expandable commands that are useful for testing.
 
 This section documents the environments provided by the \cls{beerydoc} class.
 
-\begin{code}{env:code}
+\begin{code}{\begin{code}}
   \begin{syntax}
-    |\begin{code}|\marg{code elements}
+    |\begin{code}| \marg{code elements}
     ~~\meta{code documentation}
     |\end{code}|
   \end{syntax}
@@ -274,11 +274,10 @@ This section documents the environments provided by the \cls{beerydoc} class.
   code elements.
   The content is contained within an \pkg{expl3} |coffin| to prevent page
   breaks.
-  Should be paired with a nested \env{syntax} environment.
   Cannot be used within another \env{code} environment.
 \end{code}
 
-\begin{code}{env:syntax}
+\begin{code}{\begin{syntax}}
   \begin{syntax}
     |\begin{syntax}|
     ~~\meta{code syntax}
