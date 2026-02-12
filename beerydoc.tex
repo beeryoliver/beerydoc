@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 6 February 2026
+Version 0.0.0\quad 11 February 2026
 
 
 \section{About}
@@ -32,9 +32,6 @@ Documentation for the \cls{beerydoc} class.
 \label{subsec:pkgoptions}
 
 \begin{code}{showframe}
-  \begin{syntax}
-    \key{showframe}
-  \end{syntax}
   Passes option \key{showframe} to the \pkg{geometry} package.
 \end{code}
 
@@ -137,9 +134,6 @@ for verbatim.
 \end{code}
 
 \begin{code}{\sarg}
-  \begin{syntax}
-    \cs{sarg}
-  \end{syntax}
   Prints an optional star.
   The optional star is enclosed in angle brackets and printed in \cs{ttfamily}.
 \end{code}
@@ -204,23 +198,14 @@ for verbatim.
 Some expandable commands that are useful for testing.
 
 \begin{code}{\alphabet}
-  \begin{syntax}
-    \cs{alphabet}
-  \end{syntax}
   Expands to \enquote{\alphabet}.
 \end{code}
 
 \begin{code}{\digits}
-  \begin{syntax}
-    \cs{digits}
-  \end{syntax}
   Expands to \enquote{\digits}.
 \end{code}
 
 \begin{code}{\pangram}
-  \begin{syntax}
-    \cs{pangram}
-  \end{syntax}
   Expands to \enquote{\pangram}
 \end{code}
 
@@ -228,16 +213,10 @@ Some expandable commands that are useful for testing.
 \label{subsec:other}
 
 \begin{code}{\muskipeval}
-  \begin{syntax}
-    \cs{muskipeval} \marg{muskip expr}
-  \end{syntax}
   Equivalent to \cs{muskip_eval:n}.
 \end{code}
 
 \begin{code}{\printfontsizecommand}
-  \begin{syntax}
-    \cs{printfontsizecommand}
-  \end{syntax}
   Identical to \cs{printfontsizecommand} defined by the \pkg{fontscale}
   package, except that the command name is formatted using \cs{cs}
   (\S\ref{subsec:clsmarkup}).
