@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 8 March 2026
+Version 0.0.0\quad 9 March 2026
 
 
 \section{About}
@@ -35,11 +35,13 @@ Documentation for the \cls{beerydoc} class.
   Passes option \key{showframe} to the \pkg{geometry} package.
 \end{code}
 
-\subsection{Miscellaneous}
-\label{subsec:misc}
+\subsection{Active character}
+\label{subsec:activechar}
 
-The vertical bar \texttt{\textbar} is set as an active character, a shortcut
-for verbatim.
+This class makes \texttt{\string|} an active character, a shortcut for
+verbatim.
+Within verbatim, spaces are replaced by \cs{textvisiblespace}.
+The contents are printed in \cs{ttfamily}.
 
 
 \section{Commands}
@@ -100,17 +102,7 @@ for verbatim.
   \meta{comma list}.
   The contents are printed in \cs{ttfamily} and \cs{slshape}.
   \cs{meta} is usuable in math mode.
-
-  \listheading
-    {
-      Within \meta{meta}, the underscore \texttt{\textunderscore} is used to
-      apply a subscript.
-      For example, the code on the left prints the display on the right.
-    }
-  \begin{itemize}[parsep=0pt]
-    \item |\meta{token list_1}| \rightarrow{} \meta{token list_1}
-    \item |\meta{integer_2}| \rightarrow{} \meta{integer_2}
-  \end{itemize}
+  Within \meta{meta}, the underscore |_| is used to apply a subscript.
 \end{code}
 
 \begin{code}{\marg}
