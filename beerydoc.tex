@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 9 March 2026
+Version 0.0.0\quad 3 April 2026
 
 
 \section{About}
@@ -52,7 +52,7 @@ The contents are printed in \cs{ttfamily}.
 
 \begin{code}{\key}
   \begin{syntax}
-    \cs{key} \marg*{\meta{key}=\meta{value}}
+    \cs{key} \oarg{key-value list} \marg*{\meta{key}=\meta{value}}
     \cs{key} \marg{key}
     \cs{key} \marg*{=\meta{value}}
   \end{syntax}
@@ -66,6 +66,8 @@ The contents are printed in \cs{ttfamily}.
   Sometimes the best way to typeset the value of a key is not with
   \cs{key}\marg*{=\meta{value}}, but with \cs{num}, \cs{qty},
   (both from the \pkg{siunitx} package) or \cs{meta}.
+  \meta{key-value list} sets the keys in path |key| for only that particular
+  usage of \cs{key}.
 \end{code}
 
 \begin{code}{\choices}
@@ -75,6 +77,12 @@ The contents are printed in \cs{ttfamily}.
   This command is defined only in \meta{value} in \cs{key}.
   Prints the available choices in \meta{comma list} when documenting a choice
   key.
+\end{code}
+
+\begin{code}{key/neq}
+  Key that can be used only in \cs{key}.
+  Prints a not equal sign instead of an equal sign.
+  This key does nothing if used in a \env{syntax} environment or PDF string.
 \end{code}
 
 \begin{code}{\cs}
