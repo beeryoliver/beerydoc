@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 21 June 2026
+Version 0.0.0\quad 23 June 2026
 
 
 \section{About}
@@ -151,6 +151,19 @@ The contents are printed in \cs{ttfamily}.
   \meta{class} and \meta{package} are printed in \cs{sffamily}.
   The rest are printed in \cs{ttfamily}.
   Within \meta{hook} and \meta{socket}, line breaks after allowed after |/|.
+\end{code}
+
+\begin{code}{\charcode}
+  \begin{syntax}
+    \cs{charcode} \oarg{integer} \marg{char}
+  \end{syntax}
+  Prints a character \meta{char} with catcode \meta{integer}.
+  \meta{char} is printed in \cs{ttfamily} and the printed catcode is
+  subscripted.
+  The space is printed using \cs{textvisiblespace}.
+  A character that does not have catcode 11 may be escaped using |\|.
+  If \meta{integer} is omitted, then it equals the current catcode of
+  \meta{char}.
 \end{code}
 
 \subsection{Some text formatting}
