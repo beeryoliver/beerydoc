@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 23 June 2026
+Version 0.0.0\quad 27 June 2026
 
 
 \section{About}
@@ -38,10 +38,15 @@ Documentation for the \cls{beerydoc} class.
 \subsection{Active character}
 \label{subsec:activechar}
 
-This class makes \texttt{\string|} an active character, a shortcut for
-verbatim.
-Within verbatim, spaces are replaced by \cs{textvisiblespace}.
-The contents are printed in \cs{ttfamily}.
+\begin{code}{|}
+  \begin{syntax}
+    \string|\meta{verbatim}\string|
+  \end{syntax}
+  Active character.
+  Shorthand for verbatim.
+  Prints \meta{verbatim} in \cs{ttfamily}.
+  Spaces are typeset using \cs{textvisiblespace}.
+\end{code}
 
 
 \section{Commands}
