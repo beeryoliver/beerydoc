@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 27 June 2026
+Version 0.0.0\quad 30 June 2026
 
 
 \section{About}
@@ -58,8 +58,8 @@ Documentation for the \cls{beerydoc} class.
 \begin{code}{\key}
   \begin{syntax}
     \cs{key} \oarg{key-value list} \marg*{\meta{key}=\meta{value}}
-    \cs{key} \marg{key}
-    \cs{key} \marg*{=\meta{value}}
+    \cs{key} \oarg{key-value list} \marg{key}
+    \cs{key} \oarg{key-value list} \marg*{=\meta{value}}
   \end{syntax}
   Prints a key-value pair, a key, or the value of a key.
   \meta{key} and \meta{value} are printed in \cs{ttfamily}.
@@ -68,20 +68,18 @@ Documentation for the \cls{beerydoc} class.
   The leading |=| in \marg*{=\meta{value}} is omitted.
   Within \meta{key}, line breaks are allowed after |/|.
   Within \meta{value}, spaces are replaced by \cs{textvisiblespace}.
+  Within \meta{value}, the vertical bar \texttt{\string|} may be used to
+  separate each \meta{choice} when documenting a choice key.
   Sometimes the best way to typeset the value of a key is not with
-  \cs{key}\marg*{=\meta{value}}, but with \cs{num}, \cs{qty},
-  (both from the \pkg{siunitx} package) or \cs{meta}.
-  \meta{key-value list} sets the keys in path |key| for only that particular
-  usage of \cs{key}.
-\end{code}
-
-\begin{code}{\choices}
-  \begin{syntax}
-    \cs{choices} \marg{comma list}
-  \end{syntax}
-  This command is defined only in \meta{value} in \cs{key}.
-  Prints the available choices in \meta{comma list} when documenting a choice
-  key.
+  \cs{key}\marg*{=\meta{value}}, but with one of the following:
+  \begin{itemize}
+    \item \cs{num}, \cs{qty} (see \pkg{siunitx} package)
+    \item \cs{meta}
+    \item \cs{cs}
+    \item verbatim shorthand \texttt{\string|}
+  \end{itemize}
+  \meta{key-value list} sets the keys in path |key| for only that instance of
+  \cs{key}.
 \end{code}
 
 \begin{code}{key/neq}
