@@ -152,7 +152,6 @@
 % Custom macros
 
 \cs_generate_variant:Nn \tl_replace_all:Nnn { No }
-\cs_generate_variant:Nn \clist_use:nn { V }
 
 \cs_new_protected:Npn \__beerydoc_langle: { \ensuremath { \langle } }
 \cs_new_protected:Npn \__beerydoc_rangle: { \ensuremath { \rangle } }
