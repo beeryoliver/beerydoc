@@ -821,9 +821,9 @@
     , parsep    = 0pt
     , itemsep   = 0pt
   }
-\setlist[2]{leftmargin=*}
-\setlist[3]{leftmargin=*}
-\setlist[4]{leftmargin=*}
+\setlist [2] { leftmargin = * }
+\setlist [3] { leftmargin = * }
+\setlist [4] { leftmargin = * }
 \setlist [ itemize   , 1 ] { label = \textbullet }
 \setlist [ itemize   , 2 ] { label = \scaletextbullets {2} }
 \setlist [ itemize   , 3 ] { label = \scaletextbullets {3} }
