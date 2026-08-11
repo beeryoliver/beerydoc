@@ -687,7 +687,7 @@
 
 % Floats
 
-\renewcommand \bottomfraction { 0.5 } % default = 0.3
+\tl_set:Nn \bottomfraction { 0.5 } % default = 0.3
 \setcounter { bottomnumber } { 2 } % default = 1
 \setcounter { topnumber } { 3 } % default = 2
 \setcounter { totalnumber } { 4 } % default = 3
@@ -729,7 +729,7 @@
 \RequirePackage { fancyhdr }
 \pagestyle { fancy }
 \fancyhf { }
-\renewcommand \headrulewidth { 0pt }
+\tl_set:Nn \headrulewidth { 0pt }
 \fancyfoot [ C ] { \thepage \c_space_tl of~ \pageref { LastPage } }
 
 % Paragraph style
