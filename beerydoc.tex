@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 11 August 2026
+Version 0.0.0\quad 15 August 2026
 
 
 \section{About}
@@ -19,7 +19,7 @@ Version 0.0.0\quad 11 August 2026
 Documentation for the \cls{beerydoc} class.
 
 \subsection{Loading the class}
-\label{subsec:loading}
+\label{subsec:load}
 
 \listheading{Requirements:}
 \begin{itemize}
@@ -51,7 +51,7 @@ Documentation for the \cls{beerydoc} class.
 
 
 \section{Commands}
-\label{sec:commands}
+\label{sec:cmds}
 
 \subsection{Markup for package and class commands}
 \label{subsec:clsmarkup}
@@ -241,22 +241,41 @@ Some expandable commands that are useful for testing.
 
 
 \section{Environments}
-\label{sec:environments}
+\label{sec:envs}
 
 This section documents the environments provided by the \cls{beerydoc} class.
 
 \begin{code}{\begin{code}}
   \begin{syntax}
-    |\begin{code}| \marg{code elements}
+    |\begin{code}| \oarg{key-value list} \marg{code element(s)}
     ~~\meta{code documentation}
     |\end{code}|
   \end{syntax}
-  Used to document code elements such commands, keys, and environments.
-  \meta{code elements} should contain a comma-separated list of the documented
-  code elements.
+  Environment used to document code elements such commands, keys, and
+  environments.
+  \marg{code element(s)} is processed as a verbatim argument.
+  Each \meta{code element} must be separated by a line break or by the value of
+  the key \key{code/separator}.
+  All leading spaces in each \meta{code element} are ignored.
+  The remaining spaces are replaced by \cs{textvisiblespace}.
+  (This allows the environment to document \cs{ } and command names which
+  contain spaces.)
+  A blank code element is ignored.
+  Adding the optional argument sets the keys in \meta{key-value list} in path
+  |code| for only that instance of \env{code}.
   The content is contained within an \pkg{expl3} |coffin| to prevent page
   breaks.
   Cannot be used within another \env{code} environment.
+\end{code}
+
+\begin{code}{code/separator}
+  \begin{syntax}
+    \key{code/separator=\meta{string}}
+  \end{syntax}
+  Key that can be used only in a \env{code} environment.
+  Sets the separator between each \meta{code element} to \meta{string}.
+  \meta{string} must not be empty or contain spaces.
+  The initial value is |,|.
 \end{code}
 
 \begin{code}{\begin{syntax}}
@@ -265,7 +284,7 @@ This section documents the environments provided by the \cls{beerydoc} class.
     ~~\meta{code syntax}
     |\end{syntax}|
   \end{syntax}
-  Used to document code syntax.
+  Environment used to document code syntax.
   Must be used within a \env{code} environment.
   The contents are printed in \cs{ttfamily}.
   \cs{obeylines} and \cs{obeyspaces} are enabled within a \env{syntax}
