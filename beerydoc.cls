@@ -495,19 +495,19 @@
 % Code and syntax environments
 
 % For the code and syntax environments, I have used ideas from l3doc.
-\str_new:N \l__beerydoc_code_separator_str
-\str_set:Nn \l__beerydoc_code_separator_str { , }
+\str_new:N \l__beerydoc_code_input_separator_str
+\str_set:Nn \l__beerydoc_code_input_separator_str { , }
 \keys_define:nn { beerydoc / code }
   {
-      separator .code:n =
+      input-separator .code:n =
         {
-          \str_set:Nn \l__beerydoc_code_separator_str {#1}
-          \str_if_empty:NT \l__beerydoc_code_separator_str
-            { \msg_error:nn { beerydoc } { code-separator-invalid } }
-          \str_if_in:NnT \l__beerydoc_code_separator_str { ~ }
-            { \msg_error:nn { beerydoc } { code-separator-invalid } }
+          \str_set:Nn \l__beerydoc_code_input_separator_str {#1}
+          \str_if_empty:NT \l__beerydoc_code_input_separator_str
+            { \msg_error:nn { beerydoc } { code-input-separator-invalid } }
+          \str_if_in:NnT \l__beerydoc_code_input_separator_str { ~ }
+            { \msg_error:nn { beerydoc } { code-input-separator-invalid } }
         }
-    , separator .value_required:n = true
+    , input-separator .value_required:n = true
   }
 \NewDocumentEnvironment { code } { o +v }
   {
@@ -583,7 +583,7 @@
     \tl_replace_all:NVn \l__beerydoc_code_names_tl
       { \c__beerydoc_active_tab_tl } { \scan_stop: }
     \tl_replace_all:NVn \l__beerydoc_code_names_tl
-      \l__beerydoc_code_separator_str { \obeyedline }
+      \l__beerydoc_code_input_separator_str { \obeyedline }
     \seq_set_split:NnV \l__beerydoc_code_names_seq
       { \obeyedline } \l__beerydoc_code_names_tl
     \seq_map_variable:NNn \l__beerydoc_code_names_seq \l__beerydoc_tmp_tl
@@ -988,10 +988,11 @@
   { '\iow_char:N \\ #1'~ invalid~ in~ math~ mode~ \msg_line_context:. }
 \msg_new:nnn { beerydoc } { char-invalid }
   { Invalid~ character~ '#1'~ \msg_line_context:. }
-\msg_new:nnn { beerydoc } { code-separator-invalid }
+\msg_new:nnn { beerydoc } { code-input-separator-invalid }
   {
-    Invalid~ value~ '\l__beerydoc_code_separator_str'~ \msg_line_context:. \\
-    The~ value~ of~ the~ key~ 'code / separator'~ cannot~ be~ empty~ or~
+    Invalid~ value~ '\l__beerydoc_code_input_separator_str'~
+    \msg_line_context:. \\
+    The~ value~ of~ the~ key~ 'code / input-separator'~ cannot~ be~ empty~ or~
     contain~ spaces.
   }
 \msg_new:nnn { beerydoc } { code-env-no-items }

@@ -237,7 +237,7 @@ This section documents the environments provided by the \cls{beerydoc} class.
   environments.
   \marg{code element(s)} is processed as a verbatim argument.
   Each \meta{code element} must be separated by a line break or by the value of
-  the key \key{code/separator}.
+  the key \key{code/input-separator}.
   All leading spaces in each \meta{code element} are ignored.
   The remaining spaces are replaced by \cs{textvisiblespace}.
   (This allows the environment to document \cs{ } and command names which
@@ -250,12 +250,12 @@ This section documents the environments provided by the \cls{beerydoc} class.
   Cannot be used within another \env{code} environment.
 \end{code}
 
-\begin{code}{code/separator}
+\begin{code}{code/input-separator}
   \begin{syntax}
-    \key{code/separator=\meta{string}}
+    \key{code/input-separator=\meta{string}}
   \end{syntax}
   Key that can be used only in a \env{code} environment.
-  Sets the separator between each \meta{code element} to \meta{string}.
+  Sets the input separator between each \meta{code element} to \meta{string}.
   \meta{string} must not be empty or contain spaces.
   The initial value is |,|.
 \end{code}
