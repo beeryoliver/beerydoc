@@ -113,6 +113,8 @@
   \char_set_active_eq:NN _ \scan_stop:
   \tl_const:Ne \c__beerydoc_active_underscore_tl
     { \char_generate:nn { `_ } { 13 } }
+  \char_set_active_eq:NN : \scan_stop:
+  \tl_const:Ne \c__beerydoc_active_colon_tl { \char_generate:nn { `: } { 13 } }
   \char_set_active_eq:nN { `\^^I } \scan_stop:
   \tl_const:Ne \c__beerydoc_active_tab_tl
     { \char_generate:nn { `\^^I } { 13 } }
@@ -257,6 +259,8 @@
   {
     \tl_replace_all:Nnn \exp_not:N \l__beerydoc_cs_tl
       { \exp_not:V \c__beerydoc_active_vert_tl } { | }
+    \tl_replace_all:Nnn \exp_not:N \l__beerydoc_cs_tl
+      { \exp_not:V \c__beerydoc_active_colon_tl } { \c_colon_str }
     \tl_replace_all:Nnn \exp_not:N \l__beerydoc_cs_tl
       { \c__beerydoc_math_subscript_underscore_tl } { \c_underscore_str }
     \tl_replace_all:Nnn \exp_not:N \l__beerydoc_cs_tl
