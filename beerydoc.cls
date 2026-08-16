@@ -1,7 +1,7 @@
 % Loading the class
 
 \NeedsTeXFormat{LaTeX2e}[2023-11-01]
-\ProvidesExplClass{beerydoc}{2026-08-15}{0.0.0}{}
+\ProvidesExplClass{beerydoc}{2026-08-16}{0.0.0}{}
 \prop_gput:Nnn \g_msg_module_type_prop { beerydoc } { Class }
 
 \msg_new:nnn { beerydoc } { l3kernel }
@@ -465,24 +465,6 @@
     \__beerydoc_charcode_subscript:n
   }
 \cs_new_eq:NN \__beerydoc_charcode_subscript:n \__beerydoc_meta_subscript:n
-
-\NewDocumentCommand \latin { m }
-  {
-    \mode_if_math:TF
-      { \msg_error:nnn { beerydoc } { math-mode-invalid } { latin } }
-      { \__beerydoc_latin:n {#1} }
-  }
-\cs_new_protected:Npn \__beerydoc_latin:n #1
-  { \group_begin: \ttfamily #1 \group_end: }
-
-\NewDocumentCommand \honorific { m }
-  {
-    \mode_if_math:TF
-      { \msg_error:nnn { beerydoc } { math-mode-invalid } { honorific } }
-      { \__beerydoc_honorific:n {#1} }
-  }
-\cs_new_protected:Npn \__beerydoc_honorific:n #1
-  { \group_begin: #1 \@ \group_end: }
 
 \NewDocumentCommand \allcaps { O { 50 } m }
   {
