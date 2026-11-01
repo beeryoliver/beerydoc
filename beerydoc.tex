@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 25 August 2026
+Version 0.0.0\quad 31 October 2026
 
 
 \section{About}
@@ -31,14 +31,14 @@ Documentation for the \cls{beerydoc} class.
 \subsection{Package option}
 \label{subsec:pkgoptions}
 
-\begin{code}{showframe}
+\begin{codedoc}{showframe}
   Passes option \key{showframe} to the \pkg{geometry} package.
-\end{code}
+\end{codedoc}
 
 \subsection{Active character}
 \label{subsec:activechar}
 
-\begin{code}{|}
+\begin{codedoc}{|}
   \begin{syntax}
     \string|\meta{verbatim}\string|
   \end{syntax}
@@ -47,7 +47,7 @@ Documentation for the \cls{beerydoc} class.
   Prints \meta{verbatim} in \cs{ttfamily}.
   Spaces are typeset using \cs{textvisiblespace}.
   Expands to \cs{vert} if used in math mode.
-\end{code}
+\end{codedoc}
 
 
 \section{Commands}
@@ -56,7 +56,7 @@ Documentation for the \cls{beerydoc} class.
 \subsection{Markup for package and class commands}
 \label{subsec:clsmarkup}
 
-\begin{code}{\key}
+\begin{codedoc}{\key}
   \begin{syntax}
     \cs{key} \oarg{key-value list} \marg{key}
     \cs{key} \oarg{key-value list} \{\meta{key}=\meta{value}\}
@@ -81,15 +81,15 @@ Documentation for the \cls{beerydoc} class.
   \end{itemize}
   Adding the optional argument sets the keys in \meta{key-value list} in path
   |key| for only that instance of \cs{key}.
-\end{code}
+\end{codedoc}
 
-\begin{code}{key/neq}
+\begin{codedoc}{key/neq}
   Key that can be used only in \cs{key}.
   Prints a not equal sign instead of an equal sign.
   This key does nothing if used in a \env{syntax} environment or PDF string.
-\end{code}
+\end{codedoc}
 
-\begin{code}{\cs}
+\begin{codedoc}{\cs}
   \begin{syntax}
     \cs{cs} \marg{command}
   \end{syntax}
@@ -102,9 +102,9 @@ Documentation for the \cls{beerydoc} class.
   underscores.
   Spaces are replaced by \cs{textvisiblespace}.
   Active vertical bars \texttt{\textbar} are replaced by that of catcode 12.
-\end{code}
+\end{codedoc}
 
-\begin{code}{\meta}
+\begin{codedoc}{\meta}
   \begin{syntax}
     \cs{meta} \marg{meta}
   \end{syntax}
@@ -113,9 +113,9 @@ Documentation for the \cls{beerydoc} class.
   The contents are printed in \cs{ttfamily} and \cs{slshape}.
   Within \meta{meta}, the underscore |_| is used to apply a subscript.
   Can be used in math mode.
-\end{code}
+\end{codedoc}
 
-\begin{code}{\marg}
+\begin{codedoc}{\marg}
   \begin{syntax}
     \cs{marg} \sarg{} \marg{argument}
   \end{syntax}
@@ -123,9 +123,9 @@ Documentation for the \cls{beerydoc} class.
   The contents are enclosed in braces and printed in \cs{ttfamily}.
   If the optional star is omitted, \meta{argument} is formatted using
   \cs{meta}.
-\end{code}
+\end{codedoc}
 
-\begin{code}{\oarg}
+\begin{codedoc}{\oarg}
   \begin{syntax}
     \cs{oarg} \sarg{} \marg{argument}
   \end{syntax}
@@ -133,14 +133,14 @@ Documentation for the \cls{beerydoc} class.
   The contents are enclosed in square brackets and printed in \cs{ttfamily}.
   If the optional star is omitted, \meta{argument} is formatted using
   \cs{meta}.
-\end{code}
+\end{codedoc}
 
-\begin{code}{\sarg}
+\begin{codedoc}{\sarg}
   Prints an optional star.
   The optional star is enclosed in angle brackets and printed in \cs{ttfamily}.
-\end{code}
+\end{codedoc}
 
-\begin{code}{\cls, \env, \pkg, \hook, \socket, \plug}
+\begin{codedoc}{\cls, \env, \pkg, \hook, \socket, \plug}
   \begin{syntax}
     \cs{cls}    \marg{class}
     \cs{pkg}    \marg{package}
@@ -153,9 +153,9 @@ Documentation for the \cls{beerydoc} class.
   \meta{class} and \meta{package} are printed in \cs{sffamily}.
   The rest are printed in \cs{ttfamily}.
   Within \meta{hook} and \meta{socket}, line breaks after allowed after |/|.
-\end{code}
+\end{codedoc}
 
-\begin{code}{\charcode}
+\begin{codedoc}{\charcode}
   \begin{syntax}
     \cs{charcode} \oarg{integer} \marg{char}
   \end{syntax}
@@ -165,21 +165,21 @@ Documentation for the \cls{beerydoc} class.
   Some characters may need to be escaped using |\|.
   If \meta{integer} is omitted, then it equals the current catcode of
   \meta{char}.
-\end{code}
+\end{codedoc}
 
 \subsection{Some text formatting}
 \label{subsec:text}
 
-\begin{code}{\allcaps}
+\begin{codedoc}{\allcaps}
   \begin{syntax}
     \cs{allcaps} \oarg{integer} \marg{text}
   \end{syntax}
   Prints \meta{text} in all capital letters with added letterspacing.
   The added letterspacing equals \meta{integer} in units of thousandths of
   \unit{em} or, if the optional argument is omitted, \qty{0.05}{em}.
-\end{code}
+\end{codedoc}
 
-\begin{code}{\allsmallcaps}
+\begin{codedoc}{\allsmallcaps}
   \begin{syntax}
     \cs{allsmallcaps} \sarg{} \oarg{integer} \marg{text}
   \end{syntax}
@@ -188,37 +188,37 @@ Documentation for the \cls{beerydoc} class.
   \unit{em} or, if the optional argument is omitted, \qty{0.05}{em}.
   If the optional star is added, capital letters are also changed to small
   caps.
-\end{code}
+\end{codedoc}
 
 \subsection{Expandable commands}
 \label{subec:expandable}
 
 Some expandable commands that are useful for testing.
 
-\begin{code}{\alphabet}
+\begin{codedoc}{\alphabet}
   Expands to \enquote{\alphabet}.
-\end{code}
+\end{codedoc}
 
-\begin{code}{\digits}
+\begin{codedoc}{\digits}
   Expands to \enquote{\digits}.
-\end{code}
+\end{codedoc}
 
-\begin{code}{\pangram}
+\begin{codedoc}{\pangram}
   Expands to \enquote{\pangram}
-\end{code}
+\end{codedoc}
 
 \subsection{Other}
 \label{subsec:other}
 
-\begin{code}{\muskipeval}
+\begin{codedoc}{\muskipeval}
   Equivalent to \cs{muskip_eval:n}.
-\end{code}
+\end{codedoc}
 
-\begin{code}{\printfontsizecommand}
+\begin{codedoc}{\printfontsizecommand}
   Identical to \cs{printfontsizecommand} defined by the \pkg{fontscale}
   package, except that the command name is formatted using \cs{cs}
   (\S\ref{subsec:clsmarkup}).
-\end{code}
+\end{codedoc}
 
 
 \section{Environments}
@@ -226,52 +226,76 @@ Some expandable commands that are useful for testing.
 
 This section documents the environments provided by the \cls{beerydoc} class.
 
-\begin{code}{\begin{code}}
+\begin{codedoc}{\begin{codedoc}}
   \begin{syntax}
-    |\begin{code}| \oarg{key-value list} \marg{code element(s)}
+    |\begin{codedoc}| \oarg{key-value list} \marg{code element(s)}
     ~~\meta{code documentation}
-    |\end{code}|
+    |\end{codedoc}|
   \end{syntax}
   Environment used to document code elements such commands, keys, and
   environments.
   \marg{code element(s)} is processed as a verbatim argument.
   Each \meta{code element} must be separated by a line break or by the value of
-  the key \key{code/input-separator}.
+  the key \key{codedoc/input-separator}.
   All leading spaces in each \meta{code element} are ignored.
   The remaining spaces are replaced by \cs{textvisiblespace}.
   (This allows the environment to document \cs{ } and command names which
   contain spaces.)
   All blank code elements are ignored.
   Adding the optional argument sets the keys in \meta{key-value list} in path
-  |code| for only that instance of \env{code}.
+  |codedoc| for only that instance of \env{codedoc}.
   The content is contained within an \pkg{expl3} |coffin| to prevent page
   breaks.
-  Cannot be used within another \env{code} environment.
-\end{code}
+  Cannot be used within another \env{codedoc} environment.
+\end{codedoc}
 
-\begin{code}{code/input-separator}
+\begin{codedoc}{codedoc/input-separator}
   \begin{syntax}
-    \key{code/input-separator=\meta{string}}
+    \key{codedoc/input-separator=\meta{string}}
   \end{syntax}
-  Key that can be used only in a \env{code} environment.
+  Key that can be used only in a \env{codedoc} environment.
   Sets the input separator between each \meta{code element} to \meta{string}.
   \meta{string} must not be empty or contain spaces.
   The initial value is |,|.
-\end{code}
+\end{codedoc}
 
-\begin{code}{\begin{syntax}}
+\begin{codedoc}{\begin{syntax}}
   \begin{syntax}
     |\begin{syntax}|
     ~~\meta{code syntax}
     |\end{syntax}|
   \end{syntax}
   Environment used to document code syntax.
-  Must be used within a \env{code} environment.
+  Must be used within a \env{codedoc} environment.
   The contents are printed in \cs{ttfamily}.
   \cs{obeylines} and \cs{obeyspaces} are enabled within a \env{syntax}
   environment.
   Cannot be used within another \env{syntax} environment.
-\end{code}
+\end{codedoc}
+
+\begin{codedoc}{\begin{codedemo}}
+  \begin{syntax}
+    |\begin{codedemo}|\oarg{key-value list}
+    ~~\meta{code demo}
+    |\end{codedemo}|
+  \end{syntax}
+  Environment used to demonstrate code.
+  Adding the optional argument sets the keys in \meta{key-value list} in path
+  |codedemo| for only that instance of \env{codedemo}.
+  \meta{code demo} is first displayed verbatim in \cs{ttfamily} and \cs{small}
+  and then used directly.
+\end{codedoc}
+
+\begin{codedoc}{codedemo/gobble}
+  \begin{syntax}
+    \key{codedemo/gobble=\meta{integer}}
+  \end{syntax}
+  The \env{codedemo} environment ignores an \meta{integer} number of characters
+  at the start of each line.
+  No characters are ignored if \meta{integer} is zero or negative.
+  The initial value is \num{2}.
+  Within a \env{codedoc} environment, the value of this key is set to \num{4}.
+\end{codedoc}
 
 
 \end{document}
