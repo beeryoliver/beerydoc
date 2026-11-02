@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 31 October 2026
+Version 0.0.0\quad 1 November 2026
 
 
 \section{About}
@@ -56,6 +56,16 @@ Documentation for the \cls{beerydoc} class.
 \subsection{Markup for package and class commands}
 \label{subsec:clsmarkup}
 
+\begin{codedoc}{\beerydocsetup}
+  \begin{syntax}
+    \cs{beerydocsetup} \marg{key-value list}
+  \end{syntax}
+  Sets the \cls{beerydoc} class keys (\S\ref{sec:keys}) in
+  \meta{key-value list}.
+  All assignments made by \cs{beerydocsetup} are local to the current group.
+  Can be used mid-document.
+\end{codedoc}
+
 \begin{codedoc}{\key}
   \begin{syntax}
     \cs{key} \oarg{key-value list} \marg{key}
@@ -81,12 +91,6 @@ Documentation for the \cls{beerydoc} class.
   \end{itemize}
   Adding the optional argument sets the keys in \meta{key-value list} in path
   |key| for only that instance of \cs{key}.
-\end{codedoc}
-
-\begin{codedoc}{key/neq}
-  Key that can be used only in \cs{key}.
-  Prints a not equal sign instead of an equal sign.
-  This key does nothing if used in a \env{syntax} environment or PDF string.
 \end{codedoc}
 
 \begin{codedoc}{\cs}
@@ -236,7 +240,7 @@ This section documents the environments provided by the \cls{beerydoc} class.
   environments.
   \marg{code element(s)} is processed as a verbatim argument.
   Each \meta{code element} must be separated by a line break or by the value of
-  the key \key{codedoc/input-separator}.
+  the key \key{codedoc/input-separator} (\S\ref{sec:keys}).
   All leading spaces in each \meta{code element} are ignored.
   The remaining spaces are replaced by \cs{textvisiblespace}.
   (This allows the environment to document \cs{ } and command names which
@@ -247,16 +251,6 @@ This section documents the environments provided by the \cls{beerydoc} class.
   The content is contained within an \pkg{expl3} |coffin| to prevent page
   breaks.
   Cannot be used within another \env{codedoc} environment.
-\end{codedoc}
-
-\begin{codedoc}{codedoc/input-separator}
-  \begin{syntax}
-    \key{codedoc/input-separator=\meta{string}}
-  \end{syntax}
-  Key that can be used only in a \env{codedoc} environment.
-  Sets the input separator between each \meta{code element} to \meta{string}.
-  \meta{string} must not be empty or contain spaces.
-  The initial value is |,|.
 \end{codedoc}
 
 \begin{codedoc}{\begin{syntax}}
@@ -284,6 +278,32 @@ This section documents the environments provided by the \cls{beerydoc} class.
   |codedemo| for only that instance of \env{codedemo}.
   \meta{code demo} is first displayed verbatim in \cs{ttfamily} and \cs{small}
   and then used directly.
+  The content is contained within an \pkg{expl3} |coffin| to prevent page
+  breaks.
+\end{codedoc}
+
+\section{Keys}
+\label{sec:keys}
+
+\begin{codedoc}{key/neq}
+  \begin{syntax}
+    \key{key/neq=true|false}
+  \end{syntax}
+  Boolean key that sets if \cs{key} prints $\neq $ instead of $=$.
+  Does not affect the behavior of \cs{key} if it is used within a \env{syntax}
+  environment or in a PDF string.
+  The initial value is |false|.
+  The default value is |true|.
+\end{codedoc}
+
+\begin{codedoc}{codedoc/input-separator}
+  \begin{syntax}
+    \key{codedoc/input-separator=\meta{string}}
+  \end{syntax}
+  Key used in the \env{codedoc} environment.
+  Sets the input separator between each \meta{code element} to \meta{string}.
+  \meta{string} must not be empty or contain spaces.
+  The initial value is |,|.
 \end{codedoc}
 
 \begin{codedoc}{codedemo/gobble}
@@ -292,9 +312,9 @@ This section documents the environments provided by the \cls{beerydoc} class.
   \end{syntax}
   The \env{codedemo} environment ignores an \meta{integer} number of characters
   at the start of each line.
-  No characters are ignored if \meta{integer} is zero or negative.
+  No characters are ignored if $\meta{integer}<1$.
   The initial value is \num{2}.
-  Within a \env{codedoc} environment, the value of this key is set to \num{4}.
+  The value is set to \num{4} within a \env{codedoc} environment.
 \end{codedoc}
 
 
