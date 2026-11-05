@@ -10,7 +10,7 @@ Class designed for the documentation of my packages
 
 Oliver Beery
 
-Version 0.0.0\quad 1 November 2026
+Version 0.0.0\quad 4 November 2026
 
 
 \section{About}
@@ -34,6 +34,13 @@ Documentation for the \cls{beerydoc} class.
 \begin{codedoc}{showframe}
   Passes option \key{showframe} to the \pkg{geometry} package.
 \end{codedoc}
+
+\subsection{Syntax}
+\label{subsec:syntax}
+
+This documentation uses the syntax \meta{integer}.
+This syntax has the same meaning as the argument to \cs{inteval}, which is
+documented in \pkg{usrguide}.
 
 \subsection{Active character}
 \label{subsec:activechar}
@@ -74,13 +81,20 @@ Documentation for the \cls{beerydoc} class.
   \end{syntax}
   Prints a key, a key-value pair, or the value of a key.
   \meta{key} and \meta{value} are printed in \cs{ttfamily}.
-  Within \meta{key}, line breaks are allowed after |/|.
+  Within \meta{key}, |/| are replaced by \cs{slash}.
+  Within \meta{key}, active vertical bars \texttt{\string|} are replaced by
+  that of catcode 12.
   The |=| in \marg*{\meta{key}=\meta{value}} is reformatted and a line break is
   allowed afterwards.
   The leading |=| in \marg*{=\meta{value}} is omitted.
-  Within \meta{value}, spaces are replaced by \cs{textvisiblespace}.
+  Within \meta{value}, spaces and active spaces are replaced by
+  \cs{textvisiblespace}.
   Within \meta{value}, the vertical bar \texttt{\string|} may be used to
   separate each \meta{choice} when documenting a choice key.
+
+  Adding the optional argument sets the keys in \meta{key-value list} in path
+  |key| for only that instance of \cs{key}.
+
   Sometimes the best way to typeset the value of a key is not with
   \cs{key}\marg*{=\meta{value}}, but with one of the following:
   \begin{itemize}
@@ -89,8 +103,6 @@ Documentation for the \cls{beerydoc} class.
     \item \cs{cs}
     \item verbatim shorthand \texttt{\string|}
   \end{itemize}
-  Adding the optional argument sets the keys in \meta{key-value list} in path
-  |key| for only that instance of \cs{key}.
 \end{codedoc}
 
 \begin{codedoc}{\cs}
@@ -101,11 +113,19 @@ Documentation for the \cls{beerydoc} class.
   \meta{command} must omit the leading backslash |\|.
   The contents are printed in \cs{ttfamily}.
   \cs{meta} and other commands can be used in \meta{command}.
-  The underscore |_| can be typeset directly without escaping it \cs{_}.
   When printing \pkg{expl3} commands, hyphenation is allowed after most
   underscores.
-  Spaces are replaced by \cs{textvisiblespace}.
-  Active vertical bars \texttt{\textbar} are replaced by that of catcode 12.
+
+  Some token replacements at the top level are made in \meta{command}:
+  \begin{itemize}
+    \item
+    Underscores of catcode 8, 11, and 13 are replaced by that of catcode 12.
+    \item \cs{_} are replaced by an underscore of catcode 12.
+    \item Spaces and active spaces are replaced by \cs{textvisiblespace}.
+    \item Active colons are replaced by that of catcode 12.
+    \item
+    Active vertical bars \texttt{\string|} are replaced by that of catcode 12.
+  \end{itemize}
 \end{codedoc}
 
 \begin{codedoc}{\meta}
@@ -144,7 +164,7 @@ Documentation for the \cls{beerydoc} class.
   The optional star is enclosed in angle brackets and printed in \cs{ttfamily}.
 \end{codedoc}
 
-\begin{codedoc}{\cls, \env, \pkg, \hook, \socket, \plug}
+\begin{codedoc}{\cls, \pkg, \env, \hook, \socket, \plug}
   \begin{syntax}
     \cs{cls}    \marg{class}
     \cs{pkg}    \marg{package}
@@ -156,7 +176,7 @@ Documentation for the \cls{beerydoc} class.
   Prints the name of a class, package, environment, hook, socket, or plug.
   \meta{class} and \meta{package} are printed in \cs{sffamily}.
   The rest are printed in \cs{ttfamily}.
-  Within \meta{hook} and \meta{socket}, line breaks after allowed after |/|.
+  Within \meta{hook} and \meta{socket}, |/| are replaced by \cs{slash}.
 \end{codedoc}
 
 \begin{codedoc}{\charcode}
@@ -238,7 +258,7 @@ This section documents the environments provided by the \cls{beerydoc} class.
   \end{syntax}
   Environment used to document code elements such commands, keys, and
   environments.
-  \marg{code element(s)} is processed as a verbatim argument.
+  \marg{code element(s)} is a verbatim argument.
   Each \meta{code element} must be separated by a line break or by the value of
   the key \key{codedoc/input-separator} (\S\ref{sec:keys}).
   All leading spaces in each \meta{code element} are ignored.
@@ -281,6 +301,7 @@ This section documents the environments provided by the \cls{beerydoc} class.
   The content is contained within an \pkg{expl3} |coffin| to prevent page
   breaks.
 \end{codedoc}
+
 
 \section{Keys}
 \label{sec:keys}
